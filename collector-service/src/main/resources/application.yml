@@ -1,0 +1,31 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: collector-service
+
+# MongoDB Atlas Configuration (reads from .env file)
+mongodb:
+  logs:
+    uri: ${LOGS_MONGO_URI:mongodb://localhost:27017/monitoring_logs}
+  metadata:
+    uri: ${METADATA_MONGO_URI:mongodb://localhost:27017/monitoring_metadata}
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:defaultSecretKeyForDevelopmentOnlyNotForProduction}
+  expiration: ${JWT_EXPIRATION:86400000}
+
+# Alert Thresholds
+monitoring:
+  alerts:
+    latency-threshold: 500
+    rate-limit-default: 100
+
+# Logging
+logging:
+  level:
+    com.monitoring: DEBUG
+    org.springframework.data.mongodb: DEBUG
+    org.springframework.security: DEBUG

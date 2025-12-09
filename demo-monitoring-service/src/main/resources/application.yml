@@ -1,0 +1,20 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:demo-service}
+
+# Monitoring Configuration
+monitoring:
+  collector:
+    url: ${COLLECTOR_URL:http://localhost:8080/api/collector}
+  rateLimit:
+    service: ${RATE_LIMIT_SERVICE:demo-service}
+    limit: ${RATE_LIMIT_VALUE:100}
+    enabled: ${RATE_LIMIT_ENABLED:true}
+
+# Logging
+logging:
+  level:
+    com.monitoring: DEBUG
